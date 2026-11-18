@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulador de Árvore Binária de Busca</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Árvore Binária de Busca</h1>
+    <p>Execute cada operação passo a passo e veja quantas comparações ela custa.</p>
+  </header>
+
+  <section class="bar" aria-label="Operações">
+    <input id="key" type="number" value="50" min="-99" max="999" aria-label="Chave">
+    <button id="bIns">Inserir</button>
+    <button id="bSea">Buscar</button>
+    <button id="bDel">Remover</button>
+    <span class="sep"></span>
+    <button id="bIn">Em ordem</button>
+    <button id="bPre">Pré-ordem</button>
+    <button id="bPost">Pós-ordem</button>
+  </section>
+
+  <section class="bar" aria-label="Cenários">
+    <button id="bAvg">Caso médio (aleatória)</button>
+    <button id="bWorst">Pior caso (ordenada)</button>
+    <input id="custom" type="text" value="40, 20, 60, 10, 30" aria-label="Chaves separadas por vírgula">
+    <button id="bCustom">Exemplo customizado</button>
+    <button id="bCmp">Comparar O(log n) × O(n)</button>
+  </section>
+
+  <section class="bar play" aria-label="Execução">
+    <button id="bPlay" class="primary">Play</button>
+    <button id="bStep">Próximo passo</button>
+    <button id="bPause">Pausar</button>
+    <button id="bReset">Reset</button>
+    <button id="bClear">Esvaziar árvore</button>
+    <label>Velocidade
+      <select id="speed">
+        <option value="1200">Lenta</option>
+        <option value="700" selected>Normal</option>
+        <option value="250">Rápida</option>
+      </select>
+    </label>
+  </section>
+
+  <main>
+    <svg id="tree" role="img" aria-label="Desenho da árvore"></svg>
+    <aside>
+      <h2>Métricas</h2>
+      <dl>
+        <dt>Passo</dt><dd id="mStep">0/0</dd>
+        <dt>Comparações acumuladas</dt><dd id="mCmp">0</dd>
+        <dt>Nós / altura</dt><dd id="mNH">0 / -1</dd>
+        <dt>Nó atual</dt><dd id="mCur">-</dd>
+        <dt>Caminho percorrido</dt><dd id="mPath">-</dd>
+      </dl>
+      <h2>O que está acontecendo</h2>
+      <p id="log" aria-live="polite">Escolha uma operação ou um cenário.</p>
+      <ul class="legend">
+        <li><i class="cur"></i>nó sendo comparado</li>
+        <li><i class="path"></i>caminho já percorrido</li>
+        <li><i class="new"></i>inserido / copiado</li>
+        <li><i class="found"></i>encontrado</li>
+        <li><i class="del"></i>será removido</li>
+      </ul>
+    </aside>
+  </main>
+  <section id="compare" aria-live="polite"></section>
+  <script src="app.js"></script>
+</body>
+</html>
